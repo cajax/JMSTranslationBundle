@@ -163,7 +163,7 @@ class FormExtractor implements FileVisitorInterface, LoggerAwareInterface, NodeV
         $domain = null;
 
         foreach ($node->items as $item) {
-            if (!$item->key instanceof Node\Scalar\String_) {
+            if (null === $item || !$item->key instanceof Node\Scalar\String_) {
                 continue;
             }
 
