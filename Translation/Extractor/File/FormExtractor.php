@@ -119,7 +119,7 @@ class FormExtractor implements FileVisitorInterface, LoggerAwareInterface, NodeV
 
             // look for options containing a message
             foreach ($node->items as $item) {
-                if (!$item->key instanceof Node\Scalar\String_) {
+                if (null === $item || !$item->key instanceof Node\Scalar\String_) {
                     continue;
                 }
 
@@ -162,8 +162,8 @@ class FormExtractor implements FileVisitorInterface, LoggerAwareInterface, NodeV
     {
         $domain = null;
 
-        foreach ($node->items as $item) {
-            if (null === $item || !$item->key instanceof Node\Scalar\String_) {
+        foreach ($node->items as $item) {var_dump($item instanceof Node);exit;
+            if (!$item instanceof Node || !$item->key instanceof Node\Scalar\String_) {
                 continue;
             }
 
